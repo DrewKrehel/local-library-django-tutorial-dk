@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Books | Local Library</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Books</h1>
+  <p>The library has the following books available:</p>
+  <ul>
+    {% for book in books %}
+      <li>
+        <em>
+          <!-- <a href="{% url 'book-detail' book.pk %}"> -->
+          <a href="{{ book.get_absolute_url }}">
+            {{ book.title }}
+          </a>
+        </em> 
+        by {{ book.author }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

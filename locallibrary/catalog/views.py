@@ -113,6 +113,37 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
 class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
 
+class AuthorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']   
+
+class AuthorUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']   
+
+class AuthorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Author
+    success_url = reverse_lazy('authors')
+
+# Genre_CRUD 'Class' views
+class GenreDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Genre
+
+class GenreListView(LoginRequiredMixin, generic.ListView):
+    model = Genre
+    context_object_name = "genres"
+
+class GenreCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Genre
+    fields = ['name']
+
+class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Genre
+    fields = ['name']
+
+class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Genre
+    success_url = reverse_lazy('genres')
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""

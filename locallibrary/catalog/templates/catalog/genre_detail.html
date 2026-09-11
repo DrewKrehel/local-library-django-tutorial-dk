@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Genres | Local Library</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Genre Detail</h1>
+    <p><strong>Name:</strong> {{ genre.name }}</p>
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h2>Books in Genre</h2>
+        {% if genre.book_set.all %}
+            <ul>
+                {% for book in genre.book_set.all %}
+                <li>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    ({{book.bookinstance_set.all.count}})
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books found for this genre.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'genre-update' genre.pk %}">Update Genre</a> |
+    <a href="{% url 'genre-delete' genre.pk %}">Delete Genre</a>
+{% endblock %}

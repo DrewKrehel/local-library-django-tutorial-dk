@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Genres | Local Library</title>
+{% endblock %}
+
+{% block content %}
+  <a href="{% url 'genre-create' %}">Add genre</a>  
+
+  <h1>Genres</h1>
+  <ul>
+    {% for genre in genres %}
+      <li>
+        <em>
+          <a href="{{ genre.get_absolute_url }}">
+            {{ genre.name }}
+          </a>
+        </em>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

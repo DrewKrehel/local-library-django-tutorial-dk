@@ -29,4 +29,7 @@
             <p>No books found for this author.</p>
         {% endif %}
     </div>
+
+    <a href="{% url 'author-update' author.pk %}">Update Author</a> |
+    <a href="{% url 'author-delete' author.pk %}">Delete Author</a>
 {% endblock %}

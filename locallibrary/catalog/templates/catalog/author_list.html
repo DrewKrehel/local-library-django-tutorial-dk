@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+  <a href="{% url 'author-create' %}">Add Author</a>  
+
   <h1>Authors</h1>
   <ul>
     {% for author in authors %}

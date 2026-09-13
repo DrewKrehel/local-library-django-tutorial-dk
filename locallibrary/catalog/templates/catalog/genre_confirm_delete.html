@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete Genre</h1>
+    {% if genre.genreinstance_set.all %}
+        <p>You can't delete this genre until all copies have been deleted:</p>
+
+        <ul>
+        {% for copy in genre.genreinstance_set.all %}
+            <li>{{copy.id}}</a> (Imprint: {{copy.imprint}})</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>Are you sure you want to delete the genre: {{ genre }}?</p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Yes, delete.">
+        </form>
+    {% endif %}
+{% endblock %}

@@ -18,6 +18,16 @@ urlpatterns = [
     path("genre/create/", views.GenreCreateView.as_view(), name="genre-create"),
     path("genre/<int:pk>/update/", views.GenreUpdateView.as_view(), name="genre-update"),
     path("genre/<int:pk>/delete/", views.GenreDeleteView.as_view(), name="genre-delete"),
+    path("languages/", views.LanguageListView.as_view(), name="languages"),
+    path("language/<int:pk>/", views.LanguageDetailView.as_view(), name="language-detail"),
+    path("language/create/", views.LanguageCreateView.as_view(), name="language-create"),
+    path("language/<int:pk>/update/", views.LanguageUpdateView.as_view(), name="language-update"),
+    path("language/<int:pk>/delete/", views.LanguageDeleteView.as_view(), name="language-delete"),
+    path("bookinstances/", views.BookinstanceListView.as_view(), name="bookinstances"),
+    path("bookinstance/<int:pk>/", views.BookinstanceDetailView.as_view(), name="bookinstance-detail"),
+    path("bookinstance/create/", views.BookinstanceCreateView.as_view(), name="bookinstance-create"),
+    path("bookinstance/<int:pk>/update/", views.BookinstanceUpdateView.as_view(), name="bookinstance-update"),
+    path("bookinstance/<int:pk>/delete/", views.BookinstanceDeleteView.as_view(), name="bookinstance-delete"),
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
     
 ]

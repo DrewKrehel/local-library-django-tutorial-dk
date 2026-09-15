@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete Language</h1>
+    {% if language.languageinstance_set.all %}
+        <p>You can't delete this language until all copies have been deleted:</p>
+
+        <ul>
+        {% for copy in language.languageinstance_set.all %}
+            <li>{{copy.id}}</a> (Imprint: {{copy.imprint}})</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>Are you sure you want to delete the language: {{ language }}?</p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Yes, delete.">
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Languages | Local Library</title>
+{% endblock %}
+
+{% block content %}
+  <a href="{% url 'language-create' %}">Add Language</a>  
+
+  <h1>languages</h1>
+  <ul>
+    {% for language in languages %}
+      <li>
+        <em>
+          <a href="{{ language.get_absolute_url }}">
+            {{ language.name }}
+          </a>
+        </em>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -90,7 +90,7 @@ class BookDetailView(LoginRequiredMixin, generic.DetailView):
 
 #     return render(request, "catalog/book_form.html", context=context)
 
-# Create, Update, and Delete class views
+# Book_ Create, Update, and Delete class views
 class BookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Book
     fields = ['title', 'author', 'summary', 'isbn', 'genre', 'language']
@@ -144,6 +144,46 @@ class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
 class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
     success_url = reverse_lazy('genres')
+
+# Language_CRUD 'Class' views
+class LanguageDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Language
+
+class LanguageListView(LoginRequiredMixin, generic.ListView):
+    model = Language
+    context_object_name = "languages"
+
+class LanguageCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Language
+    fields = ['name']
+
+class LanguageUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Language
+    fields = ['name']
+
+class LanguageDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Language
+    success_url = reverse_lazy('languages')
+
+# Bookinstance_CRUD 'Class' views
+class BookinstanceDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Bookinstance
+
+class BookinstanceListView(LoginRequiredMixin, generic.ListView):
+    model = Bookinstance
+    context_object_name = "bookinstances"
+
+class BookinstanceCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Bookinstance
+    fields = ['id', 'book', 'imprint', 'due_back', 'borrower', 'status']
+
+class BookinstanceUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Bookinstance
+    fields = ['id', 'book', 'imprint', 'due_back', 'borrower', 'status']
+
+class BookinstanceDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Bookinstance
+    success_url = reverse_lazy('bookinstances')
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""

@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Languages | Local Library</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Language Detail</h1>
+    <p><strong>Name:</strong> {{ language.name }}</p>
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h2>Books in Language</h2>
+        {% if language.book_set.all %}
+            <ul>
+                {% for book in language.book_set.all %}
+                <li>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    ({{book.bookinstance_set.all.count}})
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books found for this language.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'language-update' language.pk %}">Update language</a> |
+    <a href="{% url 'language-delete' language.pk %}">Delete language</a>
+{% endblock %}

@@ -2,22 +2,24 @@
 
 {% block content %}
 
-<h1>Delete Author</h1>
-    {% if author.authorinstance_set.all %}
-        <p>You can't delete this author until all copies have been deleted:</p>
+<h1>Delete Author: {{ author }}</h1>
 
-        <ul>
-        {% for copy in author.authorinstance_set.all %}
-            <li>{{copy.id}}</a> (Imprint: {{copy.imprint}})</li>
-        {% endfor %}
-        </ul>
+{% if author.book_set.all %}
 
-    {% else %}
-        <p>Are you sure you want to delete the author: {{ author }}?</p>
+<p>You can't delete this author until all their books have been deleted:</p>
+<ul>
+  {% for book in author.book_set.all %}
+    <li><a href="{% url 'book-detail' book.pk %}">{{book}}</a> ({{book.bookinstance_set.all.count}})</li>
+  {% endfor %}
+</ul>
 
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-danger" value="Yes, delete.">
-        </form>
-    {% endif %}
+{% else %}
+<p>Are you sure you want to delete the author?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" action="" value="Yes, delete.">
+</form>
+{% endif %}
+
 {% endblock %}

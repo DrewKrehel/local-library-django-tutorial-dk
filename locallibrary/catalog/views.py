@@ -166,23 +166,23 @@ class LanguageDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('languages')
 
 # Bookinstance_CRUD 'Class' views
-class BookinstanceDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Bookinstance
+class BookInstanceDetailView(LoginRequiredMixin, generic.DetailView):
+    model = BookInstance
 
-class BookinstanceListView(LoginRequiredMixin, generic.ListView):
-    model = Bookinstance
+class BookInstanceListView(LoginRequiredMixin, generic.ListView):
+    model = BookInstance
     context_object_name = "bookinstances"
 
-class BookinstanceCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Bookinstance
-    fields = ['id', 'book', 'imprint', 'due_back', 'borrower', 'status']
+class BookInstanceCreateView(LoginRequiredMixin, generic.CreateView):
+    model = BookInstance
+    fields = ['book', 'imprint', 'due_back', 'borrower', 'status']
 
-class BookinstanceUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Bookinstance
-    fields = ['id', 'book', 'imprint', 'due_back', 'borrower', 'status']
+class BookInstanceUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = BookInstance
+    fields = ['book', 'imprint', 'due_back', 'borrower', 'status']
 
-class BookinstanceDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Bookinstance
+class BookInstanceDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = BookInstance
     success_url = reverse_lazy('bookinstances')
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):

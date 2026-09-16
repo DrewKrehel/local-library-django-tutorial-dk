@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>BookInstances | Local Library</title>
+{% endblock %}
+
+{% block content %}
+  <h1>BookInstance List</h1>
+  {% if bookinstances %}
+    <ul>
+      {% for bookinstance in bookinstances %}
+      <li>
+          <a href="{{ bookinstance.get_absolute_url }}">
+            {{ bookinstance.book.title }}
+          </a>
+          — {{ bookinstance.id }}
+          — {{ bookinstance.borrower }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no book instances.</p>
+  {% endif %}
+{% endblock %}

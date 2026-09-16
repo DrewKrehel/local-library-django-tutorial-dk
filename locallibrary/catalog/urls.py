@@ -23,11 +23,11 @@ urlpatterns = [
     path("language/create/", views.LanguageCreateView.as_view(), name="language-create"),
     path("language/<int:pk>/update/", views.LanguageUpdateView.as_view(), name="language-update"),
     path("language/<int:pk>/delete/", views.LanguageDeleteView.as_view(), name="language-delete"),
-    path("bookinstances/", views.BookinstanceListView.as_view(), name="bookinstances"),
-    path("bookinstance/<int:pk>/", views.BookinstanceDetailView.as_view(), name="bookinstance-detail"),
-    path("bookinstance/create/", views.BookinstanceCreateView.as_view(), name="bookinstance-create"),
-    path("bookinstance/<int:pk>/update/", views.BookinstanceUpdateView.as_view(), name="bookinstance-update"),
-    path("bookinstance/<int:pk>/delete/", views.BookinstanceDeleteView.as_view(), name="bookinstance-delete"),
+    path("bookinstances/", views.BookInstanceListView.as_view(), name="bookinstances"),
+    path("bookinstance/<uuid:pk>/", views.BookInstanceDetailView.as_view(), name="bookinstance-detail"),
+    path("bookinstance/create/", views.BookInstanceCreateView.as_view(), name="bookinstance-create"),
+    path("bookinstance/<uuid:pk>/update/", views.BookInstanceUpdateView.as_view(), name="bookinstance-update"),
+    path("bookinstance/<uuid:pk>/delete/", views.BookInstanceDeleteView.as_view(), name="bookinstance-delete"),
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
     
 ]

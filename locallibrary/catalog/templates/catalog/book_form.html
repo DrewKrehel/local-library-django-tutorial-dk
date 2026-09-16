@@ -10,7 +10,6 @@
   </form>
 
 <!-- what's going on inside the form object -->
-<h2>Add New Book</h2>
 <!-- NOTE: We could leave the action attribute out because in Django if the form is processed by the same -->
 <!-- view that renders it, then the submission will, by default, submit back to the same view -->
 <form action="{% url 'book-create' %}" method="post">

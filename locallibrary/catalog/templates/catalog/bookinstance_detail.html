@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Instance: {{ bookinstance.id }} of {{ bookinstance.book.title }}</h1>
+
+  <p><strong>Imprint:</strong> {{ bookinstance.imprint }}</p>
+  <p><strong>Due Date:</strong> {{ bookinstance.due_back }}</p>
+  <p><strong>Borrower:</strong> {{ bookinstance.borrower }}</p>
+  <p><strong>Status:</strong> {{ bookinstance.status }}</p>
+
+  <a href="{% url 'bookinstance-update' bookinstance.pk %}">Update BookInstance</a> |
+  <a href="{% url 'bookinstance-delete' bookinstance.pk %}">Delete BookInstance</a>
+{% endblock %}

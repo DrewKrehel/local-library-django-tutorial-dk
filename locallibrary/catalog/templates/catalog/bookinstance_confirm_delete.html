@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete BookInstance</h1>
+
+<p>
+    Are you sure you want to delete this book instance:
+    <strong>{{ bookinstance.book.title }}</strong>
+    ({{ bookinstance.id }})?
+</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Yes, delete.">
+</form>
+
+{% endblock %}
